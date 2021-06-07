@@ -25,11 +25,12 @@ public class MessengerServer{
 	private static Map<String, String> availableCommands = new HashMap<>();
 	static {
 		availableCommands.put("server -help", "Show available commands");
-		availableCommands.put("server/users -start_writing /<user_name>", "'server -start_write' is starting Write messages to file <to_day_date.txt>" +
-				"or if users to <user_name_to_day_date.txt>");
-		availableCommands.put("server/users -stop_writing /<user_name>", "'server -stop_write' is stopping the writing messages to file <to_day_date.txt>" +
-				"or if users to <user_name_to_day_date.txt>");
-		availableCommands.put("server/users -exit", "'server -exit' is close server, 'users -exit <user_name>' disconnect user from server.");
+		availableCommands.put("server -start_writing", "Starting Write messages from all users to file <to_day_date.txt>");
+		availableCommands.put("user -start_writing <user_name>", "starting Write messages from choose user to <user_name_to_day_date.txt> file");
+		availableCommands.put("server -stop_writing", "Stopp write the messages to file <to_day_date.txt>");
+		availableCommands.put("user -stop_writing <user_name>", "Stop  write the messages from choose user to <user_name_to_day_date.txt>");
+		availableCommands.put("server -exit", "Close server");
+		availableCommands.put("user -exit <user_name>", "Disconnect choose user from server.");
 		availableCommands.put("server -list_users", "Show all users");
 	}
 	static final String ANSI_RESET = "\u001B[0m";
@@ -194,12 +195,12 @@ public class MessengerServer{
 
 	private void guessCommand(String []args){
 		if (args.length == 2){
-			if (args[0].equals("server")) {
+			if (args[0].equals("-server")) {
 				doServerCommand(args[1]);
 				return;
 			}
 		}else if (args.length == 3){
-			if (args[0].equals("users")) {
+			if (args[0].equals("-user")) {
 				doUsersCommand(args[1], args[2]);
 				return;
 			}
