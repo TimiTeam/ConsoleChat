@@ -89,7 +89,7 @@ public class ClientServer extends Thread{
             String line;
             this.userName = in.readLine();
             if (userName == null){
-                System.out.println("cant get message from user");
+                System.out.println("can't get message from user");
                 return;
             }
             sendMessageToAll("New user connected "+userName);
