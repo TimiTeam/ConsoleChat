@@ -77,7 +77,7 @@ public class MessengerServer{
 		switch (cmd){
 			case "-help":{
 				availableCommands.forEach((k, v) ->{
-					System.out.println("-----------------------------------------------------------------------------------");
+					System.out.println("---------------------------------------------------------------------------------------------------------");
 					String key = colors.get("YELLOW")+k+ANSI_RESET;
 					String val = colors.get("CYAN")+v+ANSI_RESET;
 					System.out.printf("| %-55s | %s\n", key, val);
@@ -195,12 +195,12 @@ public class MessengerServer{
 
 	private void guessCommand(String []args){
 		if (args.length == 2){
-			if (args[0].equals("-server")) {
+			if (args[0].equals("server")) {
 				doServerCommand(args[1]);
 				return;
 			}
 		}else if (args.length == 3){
-			if (args[0].equals("-user")) {
+			if (args[0].equals("user")) {
 				doUsersCommand(args[1], args[2]);
 				return;
 			}
